@@ -1,0 +1,18 @@
+# Project parameters
+
+# Golang module name
+GOMODULE = github.com/m-sign/tools
+
+# Other configuration
+# List of directories with binaries code
+BINARIES = \
+	./cmd/msign \
+
+# List of required builds
+BUILDS=\
+	darwin-amd64  \
+	darwin-arm64  \
+	linux-amd64   \
+	windows-amd64 \
+
+
