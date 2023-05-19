@@ -102,5 +102,6 @@ var signCmd = &cobra.Command{
 
 func init() {
 	signCmd.Flags().StringVarP(&privateFile, "private", "", "", "read private key from file (default: get private key from environment variable MSIGN_PRIVATE)")
+	signCmd.Flags().BoolVarP(&signToFile, "to-file", "f", false, "save signature to file (default: print message with signature to console)")
 	rootCmd.AddCommand(signCmd)
 }
