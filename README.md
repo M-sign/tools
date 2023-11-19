@@ -5,9 +5,9 @@
 This repository contains a command-line tool for managing the M-Sign
 
 ## Installation
-Download the latest release from [GitHub Releases]() or use curl to download and install in one step:
+Download the latest release from [GitHub Releases](https://github.com/m-sign/tools/releases) or use curl to download and install in one step:
 ```bash
-curl -sfL -o msign https://github.com/m-sign/tools/releases/download/v0.0.1/msign_0.0.1_linux_amd64
+curl -sfL -o msign https://github.com/m-sign/tools/releases/download/v0.1.0/msign-linux-amd64
 ```
 ## Usage
 ```bash
