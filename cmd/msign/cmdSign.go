@@ -88,7 +88,7 @@ var signCmd = &cobra.Command{
 				output = outFile
 			}
 
-			fmt.Print("Singature for ", arg, ": ")
+			fmt.Print("Signature for ", arg, ": ")
 			err = msign.Export(output, sign)
 			if err != nil {
 				return err
