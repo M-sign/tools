@@ -8,8 +8,10 @@ ifdef NEEDED_INIIALIZATION
 	include .make/init.mk
 else
 	include .make/build.mk
-	include .make/buildap.mk
 	include .make/tools.mk
+	ifeq ($(BUILD_MULTIPLATFORM),yes)
+		include .make/buildmp.mk
+	endif
 	ifeq ($(BUILD_DOCKER),yes)
 		include .make/docker.mk
 	endif

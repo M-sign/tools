@@ -1,10 +1,10 @@
 module github.com/m-sign/tools
 
-go 1.19
+go 1.21
 
 require (
 	github.com/m-sign/msign v0.0.0-20230204225211-70543415826e
-	github.com/spf13/cobra v1.6.1
+	github.com/spf13/cobra v1.8.0
 )
 
 require (

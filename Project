@@ -8,11 +8,22 @@ GOMODULE = github.com/m-sign/tools
 BINARIES = \
 	./cmd/msign \
 
+# Support multiplatform builds
+BUILD_MULTIPLATFORM=yes
+
 # List of required builds
 BUILDS=\
 	darwin-amd64  \
 	darwin-arm64  \
 	linux-amd64   \
+	linux-arm64   \
 	windows-amd64 \
+	windows-arm64 \
 
+# Sign binaries with MSIGN tool
+MSIGN_SIGNATURE=yes
 
+# Features section
+# Enable binary self-update
+FEATURE_SHOW_VERSION=yes
+FEATURE_SELF_UPDATE=yes

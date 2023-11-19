@@ -11,9 +11,10 @@ import (
 )
 
 var signCmd = &cobra.Command{
-	Use:   "sign [list of files]",
-	Short: "Sign file(s)",
-	Long:  ``,
+	Use:          "sign [list of files]",
+	Short:        "Sign file(s)",
+	SilenceUsage: true,
+	Long:         ``,
 	Args: func(cmd *cobra.Command, args []string) error {
 		if len(args) < 1 {
 			return fmt.Errorf("requires at least one file")
@@ -34,7 +35,7 @@ var signCmd = &cobra.Command{
 				return fmt.Errorf("file %s does not exist", arg)
 			}
 
-			if signToFile {
+			if signToFile && !forceOverwrite {
 				if _, err := os.Stat(arg + ".msign"); err == nil {
 					return fmt.Errorf("file %s.msign already exists", arg)
 				}
@@ -103,5 +104,6 @@ var signCmd = &cobra.Command{
 func init() {
 	signCmd.Flags().StringVarP(&privateFile, "private", "", "", "read private key from file (default: get private key from environment variable MSIGN_PRIVATE)")
 	signCmd.Flags().BoolVarP(&signToFile, "to-file", "f", false, "save signature to file (default: print message with signature to console)")
+	signCmd.Flags().BoolVarP(&forceOverwrite, "force", "", false, "force overwrite signature file (default: msign will not overwrite existing signature file)")
 	rootCmd.AddCommand(signCmd)
 }

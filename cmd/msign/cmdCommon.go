@@ -1,9 +1,10 @@
 package main
 
 var (
-	signToFile  bool
-	privateFile string
-	publicFile  string
+	signToFile     bool
+	privateFile    string
+	publicFile     string
+	forceOverwrite bool
 )
 
 const (

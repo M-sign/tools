@@ -1,0 +1,30 @@
+on:
+  release:
+    types: [published]
+name: Golang Build and Upload Release Asset
+permissions:
+  contents: read # for checkout
+jobs:
+  build:
+    name: Build and Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # to be able to publish a GitHub release
+    steps:
+    - name: Install Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: 1.21.x
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Build
+      env:
+        RELEASE: ${{ github.event.release.tag_name }}
+        BUILDNUMBER: ${{ github.event.release.tag_name }}
+        MSIGN_PRIVATE: ${{ secrets.MSIGN_PRIVATE }}
+        MSIGN_PUBLIC: ${{ vars.MSIGN_PUBLIC }}
+      run: make buildmp
+    - name: Upload Release Asset
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: gh release upload ${{github.event.release.tag_name}} ./bin/*
